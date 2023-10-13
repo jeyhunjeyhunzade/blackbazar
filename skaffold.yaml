@@ -4,10 +4,12 @@ manifests:
   rawYaml:
     - ./infra/k8s/*
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild:
+    projectId: blackbazar-dev
   artifacts:
-    - image: mrjeyhun/bb-auth
+    - image: us.gcr.io/blackbazar-dev/auth
       context: auth
       docker:
         dockerfile: Dockerfile
