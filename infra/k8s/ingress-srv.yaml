@@ -11,7 +11,7 @@ spec:
       http:
         paths:
           - path: /api/users/?(.*)
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: auth-srv
