@@ -8,7 +8,7 @@
     "listen": "ts-node-dev --rs --notify false src/listener.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "mrjeyhun",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.8.9",
