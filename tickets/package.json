@@ -15,7 +15,7 @@
     ]
   },
   "keywords": [],
-  "author": "",
+  "author": "mrjeyhun",
   "license": "ISC",
   "dependencies": {
     "@blackbazar/common": "^1.0.15",
