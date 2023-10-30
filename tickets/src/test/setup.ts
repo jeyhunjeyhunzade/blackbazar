@@ -9,6 +9,8 @@ declare global {
   var getCookie: () => string[];
 }
 
+jest.mock("../nats-wrapper");
+
 let mongo: any;
 beforeAll(async () => {
   process.env.JWT_KEY = "lnBEduLkT4";
