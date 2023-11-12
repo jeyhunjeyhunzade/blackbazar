@@ -5,7 +5,7 @@ import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 import { Order } from "./order";
 
 interface TicketAttributes {
-  id?: string;
+  id: string;
   title: string;
   price: number;
 }
