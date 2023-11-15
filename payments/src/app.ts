@@ -2,7 +2,12 @@ import "express-async-errors";
 import express from "express";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
-import { errorHandler, NotFoundError, currentUser } from "@blackbazar/common";
+import {
+  errorHandler,
+  NotFoundError,
+  currentUser,
+  BadRequestError,
+} from "@blackbazar/common";
 
 import { createChargeRouter } from "./routes/new";
 
