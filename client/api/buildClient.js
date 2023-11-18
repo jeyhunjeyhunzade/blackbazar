@@ -5,7 +5,9 @@ export default ({ req }) => {
     // on the server
     return axios.create({
       baseURL:
-        "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
+        process.env.NODE_ENV !== "production"
+          ? "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local"
+          : "http://www.blackbazar.pro/",
       headers: req.headers,
     });
   } else {
