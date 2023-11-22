@@ -1,8 +1,15 @@
+import { AxiosInstance } from "axios";
+import { AppContext } from "next/app";
 import Link from "next/link";
 
-import buildClient from "../api/buildClient";
+import { CurrentUser, Ticket, TicketsResponse } from "types/types";
 
-const LandingPage = ({ currentUser, tickets }) => {
+interface LandingPageProps {
+  currentUser: CurrentUser | null;
+  tickets: Ticket[];
+}
+
+const LandingPage = ({ currentUser, tickets }: LandingPageProps) => {
   const ticketList = tickets?.map((ticket) => (
     <tr key={ticket.id}>
       <td>{ticket.title}</td>
@@ -31,8 +38,12 @@ const LandingPage = ({ currentUser, tickets }) => {
   );
 };
 
-LandingPage.getInitialProps = async (context, client, currentUser) => {
-  const { data } = await client.get("/api/tickets");
+LandingPage.getInitialProps = async (
+  context: AppContext,
+  client: AxiosInstance,
+  currentUser: CurrentUser | null
+) => {
+  const { data }: TicketsResponse = await client.get("/api/tickets");
 
   return { tickets: data };
 };
