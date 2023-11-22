@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Router from "next/router";
 
-import { useRequest } from "../../hooks/useRequest";
+import { useRequest } from "hooks/useRequest";
+import { CreateTicketParams, Ticket } from "/types/types";
 
 const NewTicketPage = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
-  const { doRequest, errors } = useRequest({
+  const { doRequest, errors } = useRequest<Ticket, CreateTicketParams>({
     url: "/api/tickets",
     method: "post",
     body: {
@@ -26,7 +27,7 @@ const NewTicketPage = () => {
     setPrice(value.toFixed(2));
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     doRequest();
   };

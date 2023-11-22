@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Router from "next/router";
 
-import { useRequest } from "../../hooks/useRequest";
+import { useRequest } from "hooks/useRequest";
+import { AuthParams, CurrentUser } from "/types/types";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { doRequest, errors } = useRequest({
+  const { doRequest, errors } = useRequest<
+    Omit<CurrentUser, "iat">,
+    AuthParams
+  >({
     url: "/api/users/signup",
     method: "post",
     body: {
@@ -16,7 +20,7 @@ const SignUp = () => {
     onSuccess: () => Router.push("/"),
   });
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     doRequest();
