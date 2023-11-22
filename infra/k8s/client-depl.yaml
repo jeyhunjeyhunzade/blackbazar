@@ -15,6 +15,17 @@ spec:
       containers:
         - name: client
           image: mrjeyhun/bb-client
+          env:
+            - name: BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: blackbazar-config
+                  key: BASE_URL
+            - name: STRIPE_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: blackbazar-config
+                  key: STRIPE_KEY
 ---
 apiVersion: v1
 kind: Service

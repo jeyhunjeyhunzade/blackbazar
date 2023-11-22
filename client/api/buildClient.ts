@@ -1,11 +1,12 @@
 import axios from "axios";
+import { NextPageContext } from "next";
 
-export default ({ req }) => {
+export default ({ req }: NextPageContext) => {
   if (typeof window === "undefined") {
     // on the server
     return axios.create({
-      baseURL: "http://www.blackbazar.pro/",
-      headers: req.headers,
+      baseURL: process.env.BASE_URL,
+      headers: req?.headers,
     });
   } else {
     return axios.create({
