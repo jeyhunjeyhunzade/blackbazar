@@ -37,7 +37,6 @@
 - [🤝 Contributing](#-contributing)
 ---
 
-
 ## 📂 Repository Structure
 
 ```sh
